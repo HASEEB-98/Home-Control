@@ -81,3 +81,7 @@ These dependencies are essential for running and developing the Home Control app
 ## Conclusion
 
 Home Control is a powerful tool for managing smart home devices. With its user-friendly interface and robust functionality, it offers a seamless experience for controlling and monitoring your home environment.
+
+## About the Author
+
+This project was developed by Abdul Haseeb. For any inquiries or feedback, please feel free to contact me via ahaseeb11.98@gmail.com
