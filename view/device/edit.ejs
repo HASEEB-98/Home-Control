@@ -1,0 +1,444 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/control">Control Device</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Device</li>
+    </ol>
+</nav>
+
+<% if(errors) { %>
+    <% console.log(errors) %> 
+    <% for(let i = 0; i < errors.length; i++) { %> 
+        <div class="alert alert-warning" role="alert">
+            <strong>Error!  </strong>
+            <%= errors[i] %>
+        </div>
+    <% } %>
+<% } %>
+
+<form action="/control/edit/saveEdit" method="POST" class="row g-3 needs-validation">
+
+    <div class="device-name">
+        <div class="input-group mb-3 d-flex flex-column">
+            <label for="deviceName">Device Name</label>
+            <input type="text" class="form-control" id="deviceName" value="<%- row[0].name%>" name="deviceName" placeholder="Device Name"
+                aria-label="Device Name" aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <% if(row[0].type === 'AirConditioner') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Air Conditioner" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusAirConditioner">Status</label>
+            <input type="text" class="form-control" id="statusAirConditioner" value="<%- row[0].status%>" name="statusAirConditioner"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationAirConditioner">Location</label>
+            <input type="text" class="form-control" id="locationAirConditioner" value="<%- row[0].location%>" name="locationAirConditioner"
+                placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="outsideAir">Outside Air</label>
+            <input type="text" class="form-control" id="outsideAir"value="<%- row[0].outside_air%>"  name="outsideAir" placeholder="Outside Air">
+        </div>
+
+        <div class="form-group">
+            <label for="recirculatedAir">Recirculated Air</label>
+            <input type="text" class="form-control" id="recirculatedAir" value="<%- row[0].recirculated_air%>" name="recirculatedAir"
+                placeholder="Recirculated Air">
+        </div>
+
+        <div class="form-group">
+            <label for="modeAirConditioner">Mode</label>
+            <input type="text" class="form-control" id="modeAirConditioner" value="<%- row[0].mode%>" name="modeAirConditioner"
+                placeholder="Mode">
+        </div>
+
+        <div class="form-group">
+            <label for="actualTemperatureAirConditioner">Actual Temperature</label>
+            <input type="text" class="form-control" id="actualTemperatureAirConditioner" value="<%- row[0].actual_temperature%>"
+                name="actualTemperatureAirConditioner" placeholder="Actual Temperaturee">
+        </div>
+
+        <div class="form-group">
+            <label for="requestedTemperatureAirConditioner">Requested Temperature</label>
+            <input type="text" class="form-control" id="requestedTemperatureAirConditioner" value="<%- row[0].requested_temperature%>"
+                name="requestedTemperatureAirConditioner" placeholder="Requested Temperaturee">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="AirConditioner,<%= row[0].id  %>" type="submit">Submit</button>
+        </div> 
+        
+    <% } else if(row[0].type === 'Humidifier') { %> 
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Humidifier" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusHumidifier">Status</label>
+            <input type="text" class="form-control" id="statusHumidifier" value="<%- row[0].status%>" name="statusHumidifier"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationHumidifier">Location</label>
+            <input type="text" class="form-control" id="locationHumidifier" value="<%- row[0].location%>" name="locationHumidifier"
+                placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="actualHumidity">Actual Humidity</label>
+            <input type="text" class="form-control" id="actualHumidity" value="<%- row[0].actual_humidity%>" name="actualHumidity"
+                placeholder="Actual Humidity">
+        </div>
+
+        <div class="form-group">
+            <label for="requestedHumidity">Requested Humidity</label>
+            <input type="text" class="form-control" id="requestedHumidity" value="<%- row[0].requested_humidity%>" name="requestedHumidity"
+                placeholder="Requested Humidity">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value= "Humidifier,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'AirPurifier') { %> 
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Air Purifier" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusAirPurifier">Status</label>
+            <input type="text" class="form-control" id="statusAirPurifier" value="<%- row[0].status%>" name="statusAirPurifier"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationAirPurifier">Location</label>
+            <input type="text" class="form-control" id="locationAirPurifier" value="<%- row[0].location%>" name="locationAirPurifier"
+                placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="modeAirPurifier">Mode</label>
+            <input type="text" class="form-control" id="modeAirPurifier" name="modeAirPurifier" placeholder="Mode">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="AirPurifier<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'WindowRollerShutters') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Window Roller Shutters" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusWindowRollerShutters">Status</label>
+            <input type="text" class="form-control" id="statusWindowRollerShutters" value="<%- row[0].status%>"
+                name="statusWindowRollerShutters" placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationWindowRollerShutters">Location</label>
+            <input type="text" class="form-control" id="locationWindowRollerShutters" value="<%- row[0].location%>"
+                name="locationWindowRollerShutters" placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="closedWindowRollerShutters">Closed</label>
+            <input type="text" class="form-control" id="closed"
+                name="closed" placeholder="Closed">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="WindowRollerShutters,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+    
+    <% } else if(row[0].type === 'FloorHeating') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Floor Heating" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusFloorheating">Status</label>
+            <input type="text" class="form-control" id="statusFloorheating" value="<%- row[0].status%>" name="statusFloorheating"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationFloorheating">Location</label>
+            <input type="text" class="form-control" id="locationFloorheating" value="<%- row[0].location%>" name="locationFloorheating"
+                placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="actualTemperatureFloorheating">Actual Temperature</label>
+            <input type="text" class="form-control" id="actualTemperatureFloorheating" value="<%- row[0].actual_temperature%>"
+                name="actualTemperatureFloorheating" placeholder="Actual Temperature">
+        </div>
+
+        <div class="form-group">
+            <label for="requestedTemperatureFloorheating">Requested Temperature</label>
+            <input type="text" class="form-control" id="requestedTemperatureFloorheating" value="<%- row[0].requested_temperature%>"
+                name="requestedTemperatureFloorheating" placeholder="Requested Temperature">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="FloorHeating,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'Alarm') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Alarm" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusAlarm">Status</label>
+            <input type="text" class="form-control" id="statusAlarm" value="<%- row[0].status%>" name="statusAlarm" placeholder="On/Off">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="Alarm,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'Camera') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="CCTV Camera" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+            <div class="form-group">
+                <label for="statusCamera">Status</label>
+                <input type="text" class="form-control" id="statusCamera" value="<%- row[0].status%>" name="statusCamera" placeholder="On/Off">
+            </div>
+
+            <div class="form-group">
+                <label for="statusCamera">Location</label>
+                <input type="text" class="form-control" id="locationCamera" value="<%- row[0].location%>" name="locationCamera"
+                    placeholder="Location">
+            </div>
+
+            <div class="form-group">
+                <label for="directionCamera">Direction</label>
+                <input type="text" class="form-control" id="directionCamera" name="directionCamera"
+                    placeholder="Direction">
+            </div>
+
+            <div class="form-group">
+                <label for="rotationCamera">Rotation</label>
+                <input type="text" class="form-control" id="rotationCamera" name="rotationCamera"
+                    placeholder="Rotation">
+            </div>
+
+            <div class="col-12 d-grid">
+                <button class="btn btn-primary" name="submit" value="Camera,<%= row[0].id  %>" type="submit">Submit</button>
+            </div>
+    <% } else if(row[0].type === 'GarageDoor') { %>   
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Garage Door" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusGarageDoor">Status</label>
+            <input type="text" class="form-control" id="statusGarageDoor" value="<%- row[0].status%>" name="statusGarageDoor"
+                placeholder="On/Off">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="GarageDoor,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+        
+    <% } else if(row[0].type === 'RobotVacuumCleaner') { %>  
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Robbot Vaccum Cleaner" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusRobotVacuumCleaner">Status</label>
+            <input type="text" class="form-control" id="statusRobotVacuumCleaner" value="<%- row[0].status%>" name="statusRobotVacuumCleaner"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationRobotVacuumCleaner">Location</label>
+            <input type="text" class="form-control" id="locationRobotVacuumCleaner" value="<%- row[0].location%>"
+                name="locationRobotVacuumCleaner" placeholder="Location">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="RobotVacuumCleaner,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'RobotWindowCleaner') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Robot Window Cleaner" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusRobotWindowCleaner">Status</label>
+            <input type="text" class="form-control" id="statusRobotWindowCleaner" value="<%- row[0].status%>" name="statusRobotWindowCleaner"
+                placeholder="On/Off">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="RobotWindowCleaner,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'WindowDimmer') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Window Dimmer" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusWindowDimmer">Status</label>
+            <input type="text" class="form-control" id="statusWindowDimmer" value="<%- row[0].status%>" name="statusWindowDimmer"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationWindowDimmer">Location</label>
+            <input type="text" class="form-control" id="locationWindowDimmer" value="<%- row[0].location%>" name="locationWindowDimmer" 
+                placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="dim">Dimming Percentage</label>
+            <input type="text" class="form-control" id="dim" name="dim" placeholder="Dimming Percentage">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="WindowDimmer,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'Lighting') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Lighting" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusLighting">Status</label>
+            <input type="text" class="form-control" id="statusLighting" value="<%- row[0].status%>" name="statusLighting" placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="locationLighting">Location</label>
+            <input type="text" class="form-control" id="locationLighting" value="<%- row[0].location%>" name="locationLighting" placeholder="Location">
+        </div>
+
+        <div class="form-group">
+            <label for="colorLighting">Color</label>
+            <input type="text" class="form-control" id="colorLighting" name="colorLighting" placeholder="Color">
+        </div>
+
+        <div class="form-group">
+            <label for="lightningStrength">Light Strength</label>
+            <input type="text" class="form-control" id="lightningStrength" name="lightningStrength"
+                placeholder="Lightning Strength">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="Lighting,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'GardenWatering') { %>   
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Garden Watering" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusGardenWatering">Status</label>
+            <input type="text" class="form-control" id="statusGardenWatering" value="<%- row[0].status%>" name="statusGardenWatering"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="sprayStrength">Spray Strength</label>
+            <input type="text" class="form-control" id="sprayStrength" name="sprayStrength"
+                placeholder="Spray Strength">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="GardenWatering,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'WaterFountain') { %>  
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Water Fountain" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusWaterFountain">Status</label>
+            <input type="text" class="form-control" id="statusWaterFountain" value="<%- row[0].status%>" name="statusWaterFountain"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="colorWaterFountain">Color</label>
+            <input type="text" class="form-control" id="colorWaterFountain" name="colorWaterFountain"
+                placeholder="Color">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="WaterFountain,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } else if(row[0].type === 'DogFeeder') { %>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" id="type" value="Dog Feeder" readonly name="type" autocomplete="off"
+                aria-label="type" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="form-group">
+            <label for="statusDogFeeder">Status</label>
+            <input type="text" class="form-control" id="statusDogFeeder" value="<%- row[0].status%>" name="statusDogFeeder"
+                placeholder="On/Off">
+        </div>
+
+        <div class="form-group">
+            <label for="food">Amount of Food</label>
+            <input type="text" class="form-control" id="food" name="food" placeholder="Food Amount">
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" name="submit" value="DogFeeder,<%= row[0].id  %>" type="submit">Submit</button>
+        </div>
+
+    <% } %> 
+
+</form>

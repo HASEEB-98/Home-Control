@@ -1,0 +1,500 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-5">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">New Device</li>
+    </ol>
+</nav>
+
+
+<% if(errors) { %>
+    <% console.log(errors) %> 
+    <% for(let i = 0; i < errors.length; i++) { %> 
+        <div class="alert alert-warning" role="alert">
+            <strong>Error!  </strong>
+            <%= errors[i] %>
+        </div>
+    <% } %>
+<% } %>
+
+
+<form action="/add/addDevice/" method="POST" class="needs-validation">
+    <div class="device-info">
+        <div class="device-name">
+            <div class="input-group mb-3 d-flex flex-column">
+                <label for="deviceName">Device Name</label>
+                <input type="text" class="form-control" id="deviceName" name="deviceName" placeholder="Device Name"
+                    aria-label="Device Name" aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+        <div class="device-type">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Choose Device Type
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseAirConditioner" role="button"
+                            aria-expanded="false" aria-controls="CollapseAC">Air Conditioner</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseHumidifier" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Humidifier</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseAirPurifier" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Air Purifier</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseWindowRollerShutters"
+                            role="button" aria-expanded="false" aria-controls="CollapseHumidifier">Window Roller
+                            Shutters</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseFloorHeating" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Floor Heating</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseAlarm" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Alarm</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseCamera" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">CCTV Camera</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseGarageDoor" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Garage Door</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseRobotVaccumCleaner"
+                            role="button" aria-expanded="false" aria-controls="CollapseHumidifier">Robot Vaccum
+                            Cleaner</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseRobotWindowCleaner"
+                            role="button" aria-expanded="false" aria-controls="CollapseHumidifier">Robot Window
+                            Cleaner</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseWindowsDimmer" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Windows Dimmer</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseLightning" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Lightning</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseGardenWatering" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Garden Watering</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseWaterFountain" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Water Fountain</a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="collapse" href="#CollapseDogFeeder" role="button"
+                            aria-expanded="false" aria-controls="CollapseHumidifier">Dog Feeder</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    
+    <div class="my-4">
+        <!-- Type 1 -->
+        <div class="collapse" id="CollapseAirConditioner">
+            <div class="card card-body">
+                <h2>Air Conditioner</h2>
+
+                <div class="form-group">
+                    <label for="statusAirConditioner">Status</label>
+                    <input type="text" class="form-control" id="statusAirConditioner" name="statusAirConditioner"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationAirConditioner">Location</label>
+                    <input type="text" class="form-control" id="locationAirConditioner" name="locationAirConditioner"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="outsideAir">Outside Air</label>
+                    <input type="text" class="form-control" id="outsideAir" name="outsideAir" placeholder="Outside Air">
+                </div>
+
+                <div class="form-group">
+                    <label for="recirculatedAir">Recirculated Air</label>
+                    <input type="text" class="form-control" id="recirculatedAir" name="recirculatedAir"
+                        placeholder="Recirculated Air">
+                </div>
+
+                <div class="form-group">
+                    <label for="modeAirConditioner">Mode</label>
+                    <input type="text" class="form-control" id="modeAirConditioner" name="modeAirConditioner"
+                        placeholder="Mode">
+                </div>
+
+                <div class="form-group">
+                    <label for="actualTemperatureAirConditioner">Actual Temperature</label>
+                    <input type="text" class="form-control" id="actualTemperatureAirConditioner"
+                        name="actualTemperatureAirConditioner" placeholder="Actual Temperaturee">
+                </div>
+
+                <div class="form-group">
+                    <label for="requestedTemperatureAirConditioner">Requested Temperature</label>
+                    <input type="text" class="form-control" id="requestedTemperatureAirConditioner"
+                        name="requestedTemperatureAirConditioner" placeholder="Requested Temperaturee">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="AirConditioner" type="submit">Submit</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Type 2 -->
+        <div class="collapse" id="CollapseHumidifier">
+            <div class="card card-body">
+                <h2>Humidifier</h2>
+
+                <div class="form-group">
+                    <label for="statusHumidifier">Status</label>
+                    <input type="text" class="form-control" id="statusHumidifier" name="statusHumidifier"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationHumidifier">Location</label>
+                    <input type="text" class="form-control" id="locationHumidifier" name="locationHumidifier"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="actualHumidity">Actual Humidity</label>
+                    <input type="text" class="form-control" id="actualHumidity" name="actualHumidity"
+                        placeholder="Actual Humidity">
+                </div>
+
+                <div class="form-group">
+                    <label for="requestedHumidity">Requested Humidity</label>
+                    <input type="text" class="form-control" id="requestedHumidity" name="requestedHumidity"
+                        placeholder="Requested Humidity">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="Humidifier" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 3 -->
+        <div class="collapse" id="CollapseAirPurifier">
+            <div class="card card-body">
+                <h2>Air Purifier</h2>
+
+                <div class="form-group">
+                    <label for="statusAirPurifier">Status</label>
+                    <input type="text" class="form-control" id="statusAirPurifier" name="statusAirPurifier"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationAirPurifier">Location</label>
+                    <input type="text" class="form-control" id="locationAirPurifier" name="locationAirPurifier"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="modeAirPurifier">Mode</label>
+                    <input type="text" class="form-control" id="modeAirPurifier" name="modeAirPurifier"
+                        placeholder="Mode">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="AirPurifier" type="submit">Submit</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Type 4 -->
+        <div class="collapse" id="CollapseWindowRollerShutters">
+            <div class="card card-body">
+                <h2>Window Roller Shutters</h2>
+
+                <div class="form-group">
+                    <label for="statusWindowRollerShutters">Status</label>
+                    <input type="text" class="form-control" id="statusWindowRollerShutters"
+                        name="statusWindowRollerShutters" placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationWindowRollerShutters">Location</label>
+                    <input type="text" class="form-control" id="locationWindowRollerShutters"
+                        name="locationWindowRollerShutters" placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="closedWindowRollerShutters">Closed</label>
+                    <input type="text" class="form-control" id="closed" name="closed" placeholder="Closed">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="WindowRollerShutters"
+                        type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 5 -->
+        <div class="collapse" id="CollapseFloorHeating">
+            <div class="card card-body">
+                <h2>Floor Heating</h2>
+
+                <div class="form-group">
+                    <label for="statusFloorheating">Status</label>
+                    <input type="text" class="form-control" id="statusFloorheating" name="statusFloorheating"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationFloorheating">Location</label>
+                    <input type="text" class="form-control" id="locationFloorheating" name="locationFloorheating"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="actualTemperatureFloorheating">Actual Temperature</label>
+                    <input type="text" class="form-control" id="actualTemperatureFloorheating"
+                        name="actualTemperatureFloorheating" placeholder="Actual Temperature">
+                </div>
+
+                <div class="form-group">
+                    <label for="requestedTemperatureFloorheating">Requested Temperature</label>
+                    <input type="text" class="form-control" id="requestedTemperatureFloorheating"
+                        name="requestedTemperatureFloorheating" placeholder="Requested Temperature">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="FloorHeating" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 6 -->
+        <div class="collapse" id="CollapseAlarm">
+            <div class="card card-body">
+                <h2>Alarm</h2>
+
+                <div class="form-group">
+                    <label for="statusAlarm">Status</label>
+                    <input type="text" class="form-control" id="statusAlarm" name="statusAlarm" placeholder="On/Off">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="Alarm" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 7 -->
+        <div class="collapse" id="CollapseCamera">
+            <div class="card card-body">
+                <h2>CCTV Camera</h2>
+
+                <div class="form-group">
+                    <label for="statusCamera">Status</label>
+                    <input type="text" class="form-control" id="statusCamera" name="statusCamera" placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="statusCamera">Location</label>
+                    <input type="text" class="form-control" id="locationCamera" name="locationCamera"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="directionCamera">Direction</label>
+                    <input type="text" class="form-control" id="directionCamera" name="directionCamera"
+                        placeholder="Direction">
+                </div>
+
+                <div class="form-group">
+                    <label for="rotationCamera">Rotation</label>
+                    <input type="text" class="form-control" id="rotationCamera" name="rotationCamera"
+                        placeholder="Rotation">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="Camera" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 8 -->
+        <div class="collapse" id="CollapseGarageDoor">
+            <div class="card card-body">
+                <h2>Garage Door</h2>
+
+                <div class="form-group">
+                    <label for="statusGarageDoor">Status</label>
+                    <input type="text" class="form-control" id="statusGarageDoor" name="statusGarageDoor"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="GarageDoor" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 9 -->
+        <div class="collapse" id="CollapseRobotVaccumCleaner">
+            <div class="card card-body">
+                <h2>Robot Vacuum Cleaner</h2>
+
+                <div class="form-group">
+                    <label for="statusRobotVacuumCleaner">Status</label>
+                    <input type="text" class="form-control" id="statusRobotVacuumCleaner"
+                        name="statusRobotVacuumCleaner" placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationRobotVacuumCleaner">Location</label>
+                    <input type="text" class="form-control" id="locationRobotVacuumCleaner"
+                        name="locationRobotVacuumCleaner" placeholder="Location">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="RobotVacuumCleaner"
+                        type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 10 -->
+        <div class="collapse" id="CollapseRobotWindowCleaner">
+            <div class="card card-body">
+                <h2>Robot Window Cleaner</h2>
+
+                <div class="form-group">
+                    <label for="statusRobotWindowCleaner">Status</label>
+                    <input type="text" class="form-control" id="statusRobotWindowCleaner"
+                        name="statusRobotWindowCleaner" placeholder="On/Off">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="RobotWindowCleaner"
+                        type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 11 -->
+        <div class="collapse" id="CollapseWindowsDimmer">
+            <div class="card card-body">
+                <h2>Window Dimmer</h2>
+
+                <div class="form-group">
+                    <label for="statusWindowDimmer">Status</label>
+                    <input type="text" class="form-control" id="statusWindowDimmer" name="statusWindowDimmer"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationWindowDimmer">Location</label>
+                    <input type="text" class="form-control" id="locationWindowDimmer" name="locationWindowDimmer"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="dim">Dimming Percentage</label>
+                    <input type="text" class="form-control" id="dim" name="dim" placeholder="Dimming Percentage">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="WindowDimmer" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 12 -->
+        <div class="collapse" id="CollapseLightning">
+            <div class="card card-body">
+                <h2>Lighting</h2>
+
+                <div class="form-group">
+                    <label for="statusLighting">Status</label>
+                    <input type="text" class="form-control" id="statusLighting" name="statusLighting"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="locationLighting">Location</label>
+                    <input type="text" class="form-control" id="locationLighting" name="locationLighting"
+                        placeholder="Location">
+                </div>
+
+                <div class="form-group">
+                    <label for="colorLighting">Color</label>
+                    <input type="text" class="form-control" id="colorLighting" name="colorLighting" placeholder="Color">
+                </div>
+
+                <div class="form-group">
+                    <label for="lightningStrength">Light Strength</label>
+                    <input type="text" class="form-control" id="lightningStrength" name="lightningStrength"
+                        placeholder="Lightning Strength">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="Lighting" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 13 -->
+        <div class="collapse" id="CollapseGardenWatering">
+            <div class="card card-body">
+                <h2>Garden watering</h2>
+
+                <div class="form-group">
+                    <label for="statusGardenWatering">Status</label>
+                    <input type="text" class="form-control" id="statusGardenWatering" name="statusGardenWatering"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="sprayStrength">Spray Strength</label>
+                    <input type="text" class="form-control" id="sprayStrength" name="sprayStrength"
+                        placeholder="Spray Strength">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="GardenWatering" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 14 -->
+        <div class="collapse" id="CollapseWaterFountain">
+            <div class="card card-body">
+                <h2>Water Fountain</h2>
+
+                <div class="form-group">
+                    <label for="statusWaterFountain">Status</label>
+                    <input type="text" class="form-control" id="statusWaterFountain" name="statusWaterFountain"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="colorWaterFountain">Color</label>
+                    <input type="text" class="form-control" id="colorWaterFountain" name="colorWaterFountain"
+                        placeholder="Color">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="WaterFountain" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Type 15 -->
+        <div class="collapse" id="CollapseDogFeeder">
+            <div class="card card-body">
+                <h2>Dog Feeder</h2>
+
+                <div class="form-group">
+                    <label for="statusDogFeeder">Status</label>
+                    <input type="text" class="form-control" id="statusDogFeeder" name="statusDogFeeder"
+                        placeholder="On/Off">
+                </div>
+
+                <div class="form-group">
+                    <label for="food">Amount of Food</label>
+                    <input type="text" class="form-control" id="food" name="food" placeholder="Food Amount">
+                </div>
+
+                <div class="col-12 d-grid">
+                    <button class="btn btn-primary" name="submit" value="DogFeeder" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

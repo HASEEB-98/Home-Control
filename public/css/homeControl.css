@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FBF8F2;
+}
+
+.banner-btn {
+    background-color: #0775F0;
+    border: transparent;
+    border-radius: 10px;
+    width: 180px;
+    padding: .8rem;
+    font-weight: bold;
+    color: white;
+}
+
+.banner-btn:hover {
+    background-color: #0561c9;
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+}
+
+.navbar-brand img {
+    width: 50px;
+    margin-right: .8rem;
+}
+
+/*===============================Add Device=======================*/
+
+.form-group,.device-name{
+margin-bottom: 1.2rem;
+}
+
+.form-group label,.input-group label{
+    margin-bottom: .6rem;
+}
+
+.btn{
+    background-color: #0775F0;
+}
+
+#deviceName{
+    width: 100%;
+}
+
+hr {
+    margin: 3rem 0;
+}
+
+/*=====================================About================================*/
+
+.about p
+{
+    max-width: 600px;
+}
